@@ -1,78 +1,122 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const Banner = () => {
+export default function Banner({
+  title = "Secure assets. Smarter teams.",
+  subtitle = "Centralize your hardware & licenses, automate tracking, and cut costs.",
+  ctaText = "Get Started",
+  secondaryCta = "Request Demo",
+  imageUrl = "https://images.unsplash.com/photo-1542744095-291d1f67b221?auto=format&fit=crop&w=1600&q=80",
+}) {
   return (
-    <section className="min-h-[80vh] rounded-2xl bg-black/40 text-slate-100 w-full px-6 sm:px-10 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12">
-      
-      {/* Left Section – Text Content */}
-      <div className="lg:w-1/2 flex flex-col gap-6">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-white">
-          Efficient Asset Management for Your Company
-        </h1>
-        <p className="text-slate-400 text-lg sm:text-xl leading-relaxed">
-          AssetVerse is a comprehensive digital platform that helps companies efficiently manage 
-          their physical assets like laptops, keyboards, chairs, and more. Track which employee has 
-          which equipment and streamline your entire asset management process.
-        </p>
-
-        <div className="flex flex-wrap gap-4 mt-4">
-          <div className="p-4 bg-slate-900/40 rounded-xl border border-slate-800/50 text-center">
-            <div className="text-3xl font-bold text-white">98%</div>
-            <div>Faster Audits</div>
-          </div>
-
-          <div className="p-4 bg-slate-900/40 rounded-xl border border-slate-800/50 text-center">
-            <div className="text-3xl font-bold text-white">60+</div>
-            <div>Integrations</div>
-          </div>
-
-          <div className="p-4 bg-slate-900/40 rounded-xl border border-slate-800/50 text-center">
-            <div className="text-3xl font-bold text-white">24/7</div>
-            <div>Support</div>
-          </div>
-        </div>
+    <section className="relative bg-white/20 rounded-2xl mb-12 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-10">
+        <div className="h-full w-full bg-gradient-to-r from-slate-50/10 via-white to-slate-50/20" />
       </div>
 
-      {/* Right Section – Illustration */}
-      <div className="lg:w-1/2 flex justify-center">
-        <div className="w-full max-w-md rounded-2xl p-6 bg-[#111827] border border-slate-800 shadow-2xl backdrop-blur-xl">
-          <div className="h-64 w-full bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center text-slate-500 text-lg border border-slate-700/50">
-            AssetVerse Dashboard Preview
-          </div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Left - Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <p className="inline-block rounded-full bg-emerald-50 text-emerald-700 px-3 py-1 text-sm font-medium shadow-sm">
+              Trusted by high-growth teams
+            </p>
 
-          <div className="mt-6 grid grid-cols-2 gap-4">
-            <div className="p-4 bg-slate-900/60 rounded-xl border border-slate-800/60 text-center">
-              <div className="text-xs text-slate-400">Active Assets</div>
-              <div className="text-3xl font-semibold">8,423</div>
-            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
+              {title}
+            </h1>
 
-            <div className="p-4 bg-slate-900/60 rounded-xl border border-slate-800/60 text-center">
-              <div className="text-xs text-slate-400">Maintenance Alerts</div>
-              <div className="text-3xl font-semibold">124</div>
-            </div>
-          </div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.15, duration: 0.6 }}
+              className="text-lg text-slate-600 max-w-xl"
+            >
+              {subtitle}
+            </motion.p>
 
-          <div className="mt-4 p-4 bg-slate-900/60 rounded-xl border border-slate-800/60">
-            <div className="flex justify-between text-xs text-slate-400">
-              <span>Audit Progress</span>
-              <span>62%</span>
-            </div>
-            <div className="mt-3 h-2 bg-slate-800 rounded-full overflow-hidden">
-              <div
-                className="h-full rounded-full"
-                style={{ width: "62%", background: "linear-gradient(90deg, #3b82f6, #06b6d4)" }}
-              ></div>
-            </div>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.5 }}
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+            >
+              <a
+                href="#"
+                className="inline-flex items-center justify-center rounded-2xl bg-slate-900 text-white px-5 py-3 text-sm font-semibold shadow-lg hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-900"
+                aria-label={ctaText}
+              >
+                {ctaText}
+              </a>
 
-          <p className="mt-4 text-xs text-slate-500 text-center">
-            Live asset metrics displayed in a clean, modern layout
-          </p>
+              <a
+                href="#"
+                className="inline-flex items-center justify-center rounded-2xl border border-slate-200 text-slate-900 px-5 py-3 text-sm font-medium bg-white hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-300"
+                aria-label={secondaryCta}
+              >
+                {secondaryCta}
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35 }}
+              className="pt-4 text-sm text-slate-500"
+            >
+              <span className="font-medium text-slate-800">24/7 support</span>
+              <span className="mx-2">•</span>
+              <span>Enterprise-ready security</span>
+            </motion.div>
+          </motion.div>
+
+          {/* Right - Image / Illustration */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="w-full"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+              <img
+                src={imageUrl}
+                alt="Professional corporate"
+                className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                loading="lazy"
+              />
+
+              {/* Subtle overlay cards */}
+              <div className="absolute left-6 bottom-6 flex flex-col gap-3">
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md border border-white/60"
+                >
+                  <p className="text-xs text-slate-500">Active assets</p>
+                  <p className="text-sm font-semibold text-slate-900">1,248</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md border border-white/60"
+                >
+                  <p className="text-xs text-slate-500">Recently added</p>
+                  <p className="text-sm font-semibold text-slate-900">24</p>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
-      
     </section>
   );
-};
-
-export default Banner;
+}

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../FireBase/Firebase.init";
+
+const goggleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
@@ -21,6 +23,19 @@ const AuthProvider = ({ children }) => {
 
     // signOutUser
     const signOutUser = () => signOut(auth);
+
+      // goglle sign in
+  const signinWithGoggle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, goggleProvider);
+  };
+
+  // reset password
+  const resetPassword = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email);
+  };
+
 
     // updateUser
     const updateUser = (name, photo) => {
@@ -44,7 +59,9 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         createUser,
         signInUser,
+        signinWithGoggle,
         signOutUser,
+        resetPassword,
         updateUser,
         loading,
         user,

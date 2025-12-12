@@ -5,7 +5,7 @@ import { ChevronUp } from "lucide-react";
 
 const Navber = () => {
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
 
   const links = (
     <>

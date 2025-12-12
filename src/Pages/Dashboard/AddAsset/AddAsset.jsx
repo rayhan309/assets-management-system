@@ -27,8 +27,7 @@ const AddAsset = () => {
     );
     const imageUrl = res.data.data.url;
 
-    data.senderEmail = user.email;
-    data.productImage = imageUrl;
+     data.productImage = imageUrl;
 
     axiosSquere
       .post("/assets", data)
@@ -61,6 +60,21 @@ const AddAsset = () => {
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+        {/* email */}
+        <div className="input-container">
+          <input
+            defaultValue={user?.email}
+            readOnly
+            {...register("HREmail")}
+            className="input-field"
+            type="text"
+          />
+          <label for="input-field" className="input-label">
+           Your Email
+          </label>
+          <span className="input-highlight"></span>
+        </div>
+
         {/* Product Name */}
         <div className="input-container">
           <input

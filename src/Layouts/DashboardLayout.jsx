@@ -1,9 +1,11 @@
-import { BadgePlus, CircleUserRound, FileBox } from "lucide-react";
+import { BadgePlus, BellRing, CircleUserRound, FileBox, List, WavesArrowUp } from "lucide-react";
 import React from "react";
 import { Outlet } from "react-router";
 import { Link } from "react-router";
+import useUserRole from "../Hooks/useUserRole";
 
 const DashboardLayout = () => {
+  const {hrInfo} = useUserRole();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -77,13 +79,25 @@ const DashboardLayout = () => {
             {/* all assets list */}
             <li>
               <Link 
-              to={'/dashboard/assets-list'}
+              to={'/dashboard'}
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Assets List"
               >
                 {/* my icon */}
-                <FileBox width={17} />
+                <List width={17} />
                 <span className="is-drawer-close:hidden">Assets List</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link 
+              to={'/dashboard/all-request'}
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="All Request"
+              >
+                {/* my icon */}
+                <BellRing width={17} />
+                <span className="is-drawer-close:hidden">All Request</span>
               </Link>
             </li>
 
@@ -114,6 +128,19 @@ const DashboardLayout = () => {
             </li>
 
 
+            {/* up date packege item */}
+            <li>
+              <Link 
+              to={'/dashboard/update-pac'}
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="update-pac"
+              >
+                {/* update icon */}
+               <WavesArrowUp width={17} />
+                <span className="is-drawer-close:hidden">Update Packeg</span>
+              </Link>
+            </li>
+
             {/* profile item */}
             <li>
               <Link 
@@ -129,7 +156,7 @@ const DashboardLayout = () => {
 
             {/* settigns item */}
             <li>
-              <button
+              <div
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Settings"
               >
@@ -150,7 +177,7 @@ const DashboardLayout = () => {
                   <circle cx="7" cy="7" r="3"></circle>
                 </svg>
                 <span className="is-drawer-close:hidden">Settings</span>
-              </button>
+              </div>
             </li>
           </ul>
         </div>

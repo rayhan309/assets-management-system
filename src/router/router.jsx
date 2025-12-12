@@ -13,6 +13,8 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
 import AddAsset from "../Pages/Dashboard/AddAsset/AddAsset";
 import MyAssets from "../Pages/Dashboard/myAssets/MyAssets";
 import AssetsList from "../Pages/Dashboard/AssetsList/AssetsList";
+import AllRequest from "../Pages/Dashboard/AllRequest/AllRequest";
+import UpDateP from "../Pages/Dashboard/UpDateP/UpDateP";
 
 export const router = createBrowserRouter([
   {
@@ -67,7 +69,15 @@ export const router = createBrowserRouter([
         Component: MyAssets
       },
       {
-        path: 'assets-list',
+        path: 'all-request',
+        Component:  AllRequest
+      },
+      {
+        path: 'update-pac',
+        Component:  UpDateP
+      },
+      {
+        index: true,
         Component: AssetsList
       }
     ],
